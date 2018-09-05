@@ -1,0 +1,28 @@
+CERTS
+	id (pk)
+	url
+	expiration_date
+	expiration_date_verified
+	last_email_date
+	incident
+	agreement_id (fk)
+	serial_number
+	created_at (timestamps())
+	updated_at (timestamps())
+	deleted_at (soft_deletes)
+
+AGREEMENTS (Belong To: Agency)
+	id (pk)
+	agreement_code
+	agency_id (fk)
+	created_at (timestamps())
+	updated_at (timestamps())
+	deleted_at (soft_deletes)
+
+AGENCIES (Have Many: Agreements, make sure to add to plurals)
+	id (pk)
+	name_abbreviated
+	name_long
+	created_at (timestamps())
+	updated_at (timestamps())
+	deleted_at (soft_deletes)
