@@ -54,7 +54,7 @@
         @else
         <li class="nav-item">
         @endif
-          <a class="nav-link" href="{{ url('agreement') }}">Agreements</a>
+          <a class="nav-link" href="{{ url('agreements') }}">Agreements</a>
         </li>
 
       </ul>

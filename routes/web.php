@@ -12,7 +12,10 @@
 */
 
 Route::get('/', 'CertController@index');
-
 Route::resource('certs','CertController')->only([
+    'index' #, 'show'
+]);
+
+Route::resource('agreements','AgreementController')->only([
     'index' #, 'show'
 ]);
