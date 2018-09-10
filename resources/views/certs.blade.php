@@ -131,6 +131,7 @@
                 <td>
                   <button type="button" class="btn btn-secondary">Send Mail</button>
                   <button type="button" class="btn btn-secondary">Edit Cert</button>
+                  <button type="button" data-id="{{ $cert->id  }}" class="btn btn-secondary verify-button">Verify</button>
                 </td>
               </tr>
               @endforeach
@@ -194,11 +195,38 @@
           ]
       } );
       $('#home-certs-table').show(); //The table is hidden when the page is built, then shown after all the content is formatted.
-    } );
+    
       $(function() {
         $('#datetimepicker1').datetimepicker({
           format: 'YYYY-MM-DD'
         });
+      });
+    });
+  </script>
+
+  <script type="text/javascript">
+    //$('.verify-button').click(function (e) {
+      $('body').on('click', '.verify-button', function(e) { 
+        var button = $(this);
+        var id = String($(this).data('id'));
+
+        e.preventDefault();
+        console.log($(this).data('id'));
+        // change the route 
+            $.get('/validate/' + id )
+
+               .done(function (response) {
+             // instead of button insert check icon
+                  button.parent().append('<button type="button" data-id="'+ id +'" class="btn btn-success verify-button">Verified</button>');
+             // remove button
+                  button.remove();
+                  console.log(response);
+                })
+
+                .fail(function (respnse) {
+                  console.log('Some Kind of Failure in the validation of the cert');
+
+                });
       });
   </script>
 

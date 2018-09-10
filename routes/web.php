@@ -11,6 +11,8 @@
 |
 */
 
+use App\Cert;
+
 Route::get('/', 'CertController@index');
 Route::resource('certs','CertController')->only([
     'index', 'store'
@@ -23,3 +25,11 @@ Route::resource('agreements','AgreementController')->only([
 Route::resource('agencies','AgencyController')->only([
     'store'
 ]);
+
+Route::get('/validate/{cert_id}',function($cert_id) {
+    $cert = Cert::find($cert_id);
+
+    // Do Validation Stuff Here
+    //dd($cert);
+    return response($cert);
+});
