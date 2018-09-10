@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Spatie\SslCertificate\SslCertificate;
 
 class HelperController extends Controller
 {
@@ -14,7 +15,8 @@ class HelperController extends Controller
         return $now->startOfDay()->diffInDays($expiration_date, false);
     }
 
-    public static function ValidateCertInformation () {
-    	
+    public static function CertGetExpirationDate ($url) {
+    	$certificate = SslCertificate::createForHostName($url);
+    	return ( $certificate->expirationDate() );
     }
 }

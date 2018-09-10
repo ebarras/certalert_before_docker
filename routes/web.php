@@ -29,7 +29,11 @@ Route::resource('agencies','AgencyController')->only([
 Route::get('/validate/{cert_id}',function($cert_id) {
     $cert = Cert::find($cert_id);
 
+    $cert_date = \App\Http\Controllers\HelperController::CertGetExpirationDate($cert->url);
+    $cert->expiration_datetime_verified = $cert_date;
+    $cert->save();
+
     // Do Validation Stuff Here
-    //dd($cert);
-    return response($cert);
+    return response($cert_date);
+    //return response($cert);
 });
