@@ -48,7 +48,7 @@ class AgencyController extends Controller
         $agency->name_long = $request->agency_name_long;
         $agency->save();
         return redirect()->route('agreements.index')
-                        ->with('success','Agency created successfully');
+                        ->with('success','Agency "' . $agency->name_abbreviated . ' - ' . $request->agency_name_long . '" created successfully.');
     }
 
     /**
