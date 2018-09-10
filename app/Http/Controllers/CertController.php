@@ -17,8 +17,11 @@ class CertController extends Controller
     public function index()
     {
         $agreements = Agreement::with('agency')->get();
+        $certs = Cert::with('agreement')->get();
         return view('certs')
-          ->with('agreements', $agreements);
+          ->with('agreements', $agreements)
+          ->with('certs', $certs)
+        ;
     }
 
     /**

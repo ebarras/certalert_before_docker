@@ -119,162 +119,21 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($certs as $cert)
               <tr>
-                <td>9</td>
-                <td>2018-07-06</td>
-                <td>www.google.com</td>
-                <td>2018-05-29</td>
-                <td>Can't Reach Site</td>
-                <td>INC#00000237243</td>
-                <td>OIR9959</td>
+                <td>Need Helper</td>
+                <td>{{ $cert->expiration_date }}</td>
+                <td>{{ $cert->url }}</td>
+                <td>{{ $cert->last_email_datetime ?? 'No Emails Sent' }}</td>
+                <td>{{ $cert->expiration_datetime_verified ?? 'Verification Not Attempted' }}</td>
+                <td>{{ $cert->incident ?? 'No Incident ID' }}</td>
+                <td>{{ $cert->agreement->agreement_code }}</td>
                 <td>
                   <button type="button" class="btn btn-secondary">Send Mail</button>
                   <button type="button" class="btn btn-secondary">Edit Cert</button>
                 </td>
               </tr>
-              <tr>
-                <td>9</td>
-                <td>2018-12-05</td>
-                <td>duckduckgo.com</td>
-                <td>2014-08-07</td>
-                <td>2014-08-07</td>
-                <td>INC#00000456785</td>
-                <td>OIR9959</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>2015-01-21</td>
-                <td>www.bing.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000425638</td>
-                <td>OIR9959</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>121</td>
-                <td>2015-09-21</td>
-                <td>www.yahoo.com</td>
-                <td>2018-05-29</td>
-                <td>Can't Reach Site</td>
-                <td>INC#00000147586</td>
-                <td>FSA0322</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>68</td>
-                <td>2016-02-11</td>
-                <td>www.dogpile.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000374258</td>
-                <td>FSA0322</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>12</td>
-                <td>2018-07-18</td>
-                <td>mail.google.com</td>
-                <td>2018-05-29</td>
-                <td>Expired</td>
-                <td>INC#00000024515</td>
-                <td>FSA0322</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>11</td>
-                <td>2017-12-15</td>
-                <td>www.yippy.com</td>
-                <td>2016-10-19</td>
-                <td>2016-10-19</td>
-                <td>INC#00000012567</td>
-                <td>FSA0322</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>26</td>
-                <td>2017-02-15</td>
-                <td>www.msn.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000012587</td>
-                <td>FSX0245</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>54</td>
-                <td>2017-11-03</td>
-                <td>analytics.google.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000126999</td>
-                <td>FSX0245</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>2017-10-13</td>
-                <td>maps.google.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000134679</td>
-                <td>FSX0247</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>110</td>
-                <td>2017-10-15</td>
-                <td>planet.google.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000555555</td>
-                <td>FSX0247</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>2017-10-14</td>
-                <td>maps.yahoo.com</td>
-                <td>2018-05-29</td>
-                <td>2018-05-29</td>
-                <td>INC#00000555556</td>
-                <td>FSX0247</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Send Mail</button>
-                  <button type="button" class="btn btn-secondary">Edit Cert</button>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
