@@ -1,0 +1,18 @@
+How to do things in Laravel:
+
+
+
+CONTROLLERS
+
+Add Resource Controller:
+	a. php artisan make:controller AgreementController --resource
+	b. In routes add controller with appropriate resources whitelisted.
+		Route::resource('certs','CertController')->only([
+    		'index' #, 'show'
+		]);
+
+
+
+MODELS
+
+Add Model and Relationships:
