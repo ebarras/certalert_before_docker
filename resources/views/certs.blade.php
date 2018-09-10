@@ -38,12 +38,12 @@
 
                 <div class="modal-body">
                   <div class="form-group">
-                    <label for="url">URL</label>
+                    <label for="url">URL *</label>
                     <input id="url" class="form-control" type="text" name="url_field" placeholder="www.google.com" />
                   </div>
 
                   <div class="form-group">
-                    <label for="agreement">Agreement</label>
+                    <label for="agreement">Agreement *</label>
                     <select class="form-control" id="agreement" name="agreement_field">
                       <option selected>TTT0909</option>
                       <option>TSX9385</option>
@@ -53,7 +53,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="expiration_date">Expiration Date</label>
+                    <label for="expiration_date">Expiration Date *</label>
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                       <input type="text" id="expiration_date" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
                         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
@@ -65,6 +65,11 @@
                   <div class="form-group">
                     <label for="serial_number">Serial Number</label>
                     <input id="serial_number" class="form-control" type="text" name="serial_number_field" placeholder="56078e8e6108c85f0000000050db239e" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="incident">Remedy Incident Number</label>
+                    <input id="incident" class="form-control" type="text" name="incident_field" placeholder="INC000009955995" />
                   </div>
 
                 </div>
