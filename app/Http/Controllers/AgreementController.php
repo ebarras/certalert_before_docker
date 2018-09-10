@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Agency;
+use App\Agreement;
 
 class AgreementController extends Controller
 {
@@ -37,7 +38,20 @@ class AgreementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        //return('Post to Agreements.Store');
+
+        $request->agreement_field = strtoupper($request->agreement_field);
+        $request->validate([
+            'agreement_field' => 'bail|required|unique:agreements,agreement_code|max:10',
+            'agency_field' => 'required|exists:agencies,id',
+        ]);
+        $agreement = new Agreement;
+        $agreement->agreement_code = $request->agreement_field;
+        $agreement->agency_id = $request->agency_field;
+        $agreement->save();
+        return redirect()->route('agreements.index')
+                        ->with('success','Agreement "' . $agreement->agreement_code . '" created successfully.');
     }
 
     /**

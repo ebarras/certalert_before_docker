@@ -39,7 +39,8 @@
         <div class="modal fade" id="addAgreementModal" tabindex="-1" role="dialog" aria-labelledby="addCertLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <form method="post" action="#">
+              <form method="post" action="{{ route('agreements.store') }}">
+                {{ csrf_field() }}
                 <div class="modal-header">
                   <h5 class="modal-title" id="addCertLabel">Add Agreement</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
