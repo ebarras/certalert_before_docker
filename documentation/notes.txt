@@ -5,7 +5,7 @@ How to do things in Laravel:
 CONTROLLERS
 
 Add Resource Controller:
-	a. php artisan make:controller AgreementController --resource
+	a. php artisan make:controller <Name (singular)>Controller --resource
 	b. In routes add controller with appropriate resources whitelisted.
 		Route::resource('certs','CertController')->only([
     		'index' #, 'show'
@@ -16,3 +16,7 @@ Add Resource Controller:
 MODELS
 
 Add Model and Relationships:
+	a. php artisan make:model <NAME (singular)> --migration
+	b. If using soft deleted, add to migration and model:
+		- migration - $table->softDeletes();
+		- Model - use SoftDeletes;
