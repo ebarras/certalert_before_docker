@@ -20,3 +20,4 @@ Add Model and Relationships:
 	b. If using soft deleted, add to migration and model:
 		- migration - $table->softDeletes();
 		- Model - use SoftDeletes;
+		- Model - use Illuminate\Database\Eloquent\SoftDeletes;

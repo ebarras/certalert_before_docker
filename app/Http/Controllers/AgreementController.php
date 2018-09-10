@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Agency;
+
 class AgreementController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class AgreementController extends Controller
      */
     public function index()
     {
-        return view('agreements');
+        $agencies = Agency::all();
+        return view('agreements')->with('agencies', $agencies);
     }
 
     /**

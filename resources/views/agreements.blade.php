@@ -39,7 +39,15 @@
                   </div>
                   <div class="form-group">
                     <label for="agency">Agency</label>
-                    <input id="agency" class="form-control" type="text" name="agency_field" placeholder="TTT">
+                    <select class="form-control" id="agency" name="agency_field">
+                    @foreach ($agencies as $agency)
+                      @if ($loop->first)
+                      <option selected value="{{ $agency->id }}">{{ $agency->name_abbreviated }} - {{ $agency->name_long }}</option>
+                        @continue
+                      @endif
+                      <option value="{{ $agency->id }}">{{ $agency->name_abbreviated }} - {{ $agency->name_long }}</option>
+                    @endforeach
+                    </select>
                   </div>
                 </div>
                 <div class="modal-footer">
