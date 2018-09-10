@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Agency extends Model
 {
-	public function comments()
+	public function agreement()
     {
         return $this->hasMany('App\Agreement');
     }

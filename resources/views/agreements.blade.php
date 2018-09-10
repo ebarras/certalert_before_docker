@@ -121,47 +121,18 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($agreements as $agreement)
               <tr>
-                <td>OIR9959</td>
-                <td>NITC</td>
-                <td>National Information Technology Center</td>
-                <td>Steve Stevenson, <br />Jeff Jefferson</td>
+                <td>{{ $agreement->agreement_code }}</td>
+                <td>{{ $agreement->agency->name_abbreviated }}</td>
+                <td>{{ $agreement->agency->name_long }}</td>
+                <td>Contacts Feature Not Implimented</td>
                 <td>
                   <button type="button" class="btn btn-secondary">Edit Agreement</button>
                   <button type="button" class="btn btn-secondary">Edit Contacts</button>
                 </td>
               </tr>
-              </tr>
-              <tr>
-                <td>FSA0322</td>
-                <td>FSA</td>
-                <td>Farm Service Agency</td>
-                <td>Steve Stevenson, <br />Jeff Jefferson</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Edit Agreement</button>
-                  <button type="button" class="btn btn-secondary">Edit Contacts</button>
-                </td>
-              </tr>
-              <tr>
-                <td>FSX0245</td>
-                <td>FS</td>
-                <td>Forest Service</td>
-                <td>Steve Stevenson, <br />Jeff Jefferson</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Edit Agreement</button>
-                  <button type="button" class="btn btn-secondary">Edit Contacts</button>
-                </td>
-              </tr>
-              <tr>
-                <td>FSX0247</td>
-                <td>FS</td>
-                <td>Forest Service</td>
-                <td>Steve Stevenson, <br />Jeff Jefferson</td>
-                <td>
-                  <button type="button" class="btn btn-secondary">Edit Agreement</button>
-                  <button type="button" class="btn btn-secondary">Edit Contacts</button>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

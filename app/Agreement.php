@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Agreement extends Model
 {
-	public function agreement()
+	public function agency()
     {
         return $this->belongsTo('App\Agency');
     }
