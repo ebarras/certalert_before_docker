@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Agency;
+
 class AgencyController extends Controller
 {
     /**
@@ -34,7 +36,19 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        //return('Post to Store Agency');
+        $request->agency_name_abbreviated = strtoupper($request->agency_name_abbreviated);
+        $request->validate([
+            'agency_name_abbreviated' => 'bail|required|unique:agencies,name_abbreviated|max:5',
+            'agency_name_long' => 'required|max:255',
+        ]);
+        $agency = new Agency;
+        $agency->name_abbreviated = $request->agency_name_abbreviated;
+        $agency->name_long = $request->agency_name_long;
+        $agency->save();
+        return redirect()->route('agreements.index')
+                        ->with('success','Agency created successfully');
     }
 
     /**

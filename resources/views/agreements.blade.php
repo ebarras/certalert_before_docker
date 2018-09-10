@@ -13,6 +13,15 @@
   <div class="container-fluid">
     <div class="row form-group">
       <div class="col">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+        </div>
+        @endif
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary float-right page-top-button" data-toggle="modal" data-target="#addAgreementModal">
           Add Agreement
@@ -63,7 +72,8 @@
         <div class="modal fade" id="addAgencyModal" tabindex="-1" role="dialog" aria-labelledby="addCertLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <form method="post" action="#">
+              <form method="post" action="{{ route('agencies.store') }}">
+                {{ csrf_field() }}
                 <div class="modal-header">
                   <h5 class="modal-title" id="addCertLabel">Add Agency</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -72,12 +82,12 @@
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
-                    <label for="agency">Agency Abbreviation</label>
-                    <input id="agency" class="form-control" type="text" name="agency_field" placeholder="TTT">
+                    <label for="name_abbreviated">Agency Abbreviation</label>
+                    <input id="agency_name_abbreviated" class="form-control" type="text" name="agency_name_abbreviated" placeholder="TTT">
                   </div>
                   <div class="form-group">
-                    <label for="agency_long_name">Agency</label>
-                    <input id="agency_long_name" class="form-control" type="text" name="agency_long_name_field" placeholder="Test Agency Name">
+                    <label for="name_long">Agency</label>
+                    <input id="agency_name_long" class="form-control" type="text" name="agency_name_long" placeholder="Test Agency Name">
                   </div>
                 </div>
                 <div class="modal-footer">

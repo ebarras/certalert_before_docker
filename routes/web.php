@@ -17,5 +17,9 @@ Route::resource('certs','CertController')->only([
 ]);
 
 Route::resource('agreements','AgreementController')->only([
-    'index' #, 'show'
+    'index'
+]);
+
+Route::resource('agencies','AgencyController')->only([
+    'store'
 ]);
