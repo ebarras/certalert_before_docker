@@ -315,7 +315,9 @@
       $('#home-certs-table').show(); //The table is hidden when the page is built, then shown after all the content is formatted.
     } );
       $(function() {
-        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker({
+          format: 'L'
+        });
       });
   </script>
 
