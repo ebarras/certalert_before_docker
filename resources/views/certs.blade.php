@@ -121,7 +121,7 @@
             <tbody>
               @foreach ($certs as $cert)
               <tr>
-                <td>Need Helper</td>
+                <td>{{ \App\Http\Controllers\HelperController::DaysFromNow($cert->expiration_date) }}</td>
                 <td>{{ $cert->expiration_date }}</td>
                 <td>{{ $cert->url }}</td>
                 <td>{{ $cert->last_email_datetime ?? 'No Emails Sent' }}</td>
