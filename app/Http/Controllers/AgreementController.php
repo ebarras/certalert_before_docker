@@ -16,8 +16,8 @@ class AgreementController extends Controller
      */
     public function index()
     {
-        $agencies = Agency::all();
-        $agreements = Agreement::all();
+        $agencies = Agency::get();
+        $agreements = Agreement::get();
         return view('agreements')
           ->with('agencies', $agencies)
           ->with('agreements', $agreements);

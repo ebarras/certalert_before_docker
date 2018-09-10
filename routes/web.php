@@ -13,7 +13,7 @@
 
 Route::get('/', 'CertController@index');
 Route::resource('certs','CertController')->only([
-    'index' #, 'show'
+    'index', 'store'
 ]);
 
 Route::resource('agreements','AgreementController')->only([

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Agreement;
+use App\Cert;
+
 class CertController extends Controller
 {
     /**
@@ -13,7 +16,9 @@ class CertController extends Controller
      */
     public function index()
     {
-        return view('certs');
+        $agreements = Agreement::with('agency')->get();
+        return view('certs')
+          ->with('agreements', $agreements);
     }
 
     /**
@@ -34,7 +39,24 @@ class CertController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        //return('Add A Cert Route Here');
+
+        $request->validate([
+            'url_field' => 'bail|required|unique:certs,url|max:255',
+            'agreement_field' => 'required',
+            'expiration_date' => 'required|date',
+        ]);
+        $cert = new Cert;
+        $cert->url = $request->url_field;
+        $cert->expiration_date = $request->expiration_date;
+        $cert->agreement_id = $request->agreement_field;
+        $cert->incident = $request->incident_field;
+        $cert->serial_number = $request->serial_number_field;
+        $cert->save();
+        return redirect()->route('certs.index')
+                        ->with('success','Cert "' . $cert->url . '" created successfully.');
+
     }
 
     /**

@@ -17,6 +17,20 @@
 <div class="container-fluid">
     <div class="row form-group">
       <div class="col">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+          <p>{{ $message }}</p>
+        </div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+        </div>
+        @endif
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addCertModal">
           Add Cert
@@ -27,8 +41,8 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
 
-              <form method="post" action="#">
-
+              <form method="post" action="{{ route('certs.store') }}">
+                {{ csrf_field() }}
                 <div class="modal-header">
                   <h5 class="modal-title" id="addCertLabel">Add Cert</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -45,17 +59,20 @@
                   <div class="form-group">
                     <label for="agreement">Agreement *</label>
                     <select class="form-control" id="agreement" name="agreement_field">
-                      <option selected>TTT0909</option>
-                      <option>TSX9385</option>
-                      <option>LTR1122</option>
-                      <option>DSL9384</option>
+                      @foreach ($agreements as $agreement)
+                      @if ($loop->first)
+                      <option selected value="{{ $agreement->id }}">{{ $agreement->agreement_code }} - {{ $agreement->agency->name_long }}</option>
+                        @continue
+                      @endif
+                      <option value="{{ $agreement->id }}">{{ $agreement->agreement_code }} - {{ $agreement->agency->name_long }}</option>
+                    @endforeach
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="expiration_date">Expiration Date *</label>
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                      <input type="text" id="expiration_date" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                      <input type="text" id="expiration_date" name="expiration_date" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
                         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -321,7 +338,7 @@
     } );
       $(function() {
         $('#datetimepicker1').datetimepicker({
-          format: 'L'
+          format: 'YYYY-MM-DD'
         });
       });
   </script>

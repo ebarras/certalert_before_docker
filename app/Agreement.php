@@ -11,6 +11,10 @@ class Agreement extends Model
     {
         return $this->belongsTo('App\Agency');
     }
+    public function certs()
+    {
+        return $this->hasMany('App\Cert');
+    }
 
     use SoftDeletes;
 }

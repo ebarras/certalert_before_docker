@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Agency extends Model
+class Cert extends Model
 {
-	public function agreements()
+	public function agreement()
     {
-        return $this->hasMany('App\Agreement');
+        return $this->belongsTo('App\Agreement');
     }
 
     use SoftDeletes;
