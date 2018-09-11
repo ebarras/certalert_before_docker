@@ -24,8 +24,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+
+        // A good plan to speed this up is to tally a 'failed verification' table. At a count of like... 5, stop checking the site.
+        // After a certain amount of time, run a task that resets that count to 0.
+        $schedule->command('certs:verify')
+                 //->everyMinute();
+                 ->hourly();
     }
 
     /**
