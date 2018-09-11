@@ -131,7 +131,7 @@
                 <td>
                   <button type="button" class="btn btn-secondary">Send Mail</button>
                   <button type="button" class="btn btn-secondary">Edit Cert</button>
-                  <button type="button" data-id="{{ $cert->id  }}" class="btn btn-secondary verify-button">Verify</button>
+                  <!-- <button type="button" data-id="{{ $cert->id  }}" class="btn btn-secondary verify-button">Verify</button> -->
                 </td>
               </tr>
               @endforeach
@@ -204,7 +204,7 @@
     });
   </script>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     //$('.verify-button').click(function (e) {
       $('body').on('click', '.verify-button', function(e) { 
         var button = $(this);
@@ -228,7 +228,7 @@
 
                 });
       });
-  </script>
+  </script> -->
 
   <!-- Tempus Dominus (datetime picker) JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
