@@ -121,7 +121,11 @@
             <tbody>
               @foreach ($certs as $cert)
               <tr>
+                @if ($cert->expiration_datetime_verified != '' && $cert->expiration_datetime_verified != 'Cert Verification Failed')
+                <td>{{ \App\Http\Controllers\HelperController::DaysFromNow($cert->expiration_datetime_verified) }}</td>
+                @else
                 <td>{{ \App\Http\Controllers\HelperController::DaysFromNow($cert->expiration_date) }}</td>
+                @endif
                 <td>{{ $cert->expiration_date }}</td>
                 <td>{{ $cert->url }}</td>
                 <td>{{ $cert->last_email_datetime ?? 'No Emails Sent' }}</td>
