@@ -18,7 +18,8 @@ class CreateCertsTable extends Migration
 
             $table->string('url');
             $table->date('expiration_date');
-            $table->dateTime('expiration_datetime_verified')->nullable();
+            $table->string('expiration_datetime_verified')->nullable();
+            $table->dateTime('last_good_verification_datetime')->nullable();
             $table->dateTime('last_email_datetime')->nullable();
             $table->string('incident')->nullable();
             $table->string('serial_number')->nullable();
