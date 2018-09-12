@@ -55,8 +55,8 @@ class VerifyCerts extends Command
                 $cert->expiration_datetime_verified = $expirationDate;
                 $cert->last_good_verification_datetime = Carbon::now()->toDateTimeString();
             } else {
-                $this->info("Cert Verification Failed");
-                $cert->expiration_datetime_verified = 'Cert Verification Failed';
+                $this->info('Scan Failed');
+                $cert->expiration_datetime_verified = 'Scan Failed';
             }
             $cert->save();
 

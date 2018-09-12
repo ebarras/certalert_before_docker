@@ -108,6 +108,10 @@ body p {
   padding-left: 10px;
 }
 
+table {
+  white-space:nowrap
+}
+
 tr .btn {
   line-height: .55;
 }

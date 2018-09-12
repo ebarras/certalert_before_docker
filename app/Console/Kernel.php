@@ -29,9 +29,9 @@ class Kernel extends ConsoleKernel
 
         // A good plan to speed this up is to tally a 'failed verification' table. At a count of like... 5, stop checking the site.
         // After a certain amount of time, run a task that resets that count to 0.
-        //$schedule->command('certs:verify')
+        $schedule->command('certs:verify')
                  //->everyMinute();
-                 //->everyTenMinutes();
+                 ->everyTenMinutes();
                  //->hourly();
     }
 

@@ -31,6 +31,7 @@
           </ul>
         </div>
         @endif
+
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addCertModal">
           Add Cert
@@ -109,10 +110,11 @@
             <thead>
               <tr>
                 <th>Days Left</th>
-                <th>Expiration Date</th>
                 <th>URL</th>
+                <th>Exp. Date</th>
+                <th>Scanned Exp. Date</th>
+                <th>Last Scan</th>
                 <th>Last Email</th>
-                <th>Verified Date</th>
                 <th>Incident #</th>
                 <th>Agreement</th>
                 <th>Options</th>
@@ -121,15 +123,20 @@
             <tbody>
               @foreach ($certs as $cert)
               <tr>
-                @if ($cert->expiration_datetime_verified != '' && $cert->expiration_datetime_verified != 'Cert Verification Failed')
+                @if ($cert->expiration_datetime_verified != '' && $cert->expiration_datetime_verified != 'Scan Failed')
                 <td>{{ \App\Http\Controllers\HelperController::DaysFromNow($cert->expiration_datetime_verified) }}</td>
                 @else
                 <td>{{ \App\Http\Controllers\HelperController::DaysFromNow($cert->expiration_date) }}</td>
                 @endif
-                <td>{{ $cert->expiration_date }}</td>
                 <td>{{ $cert->url }}</td>
-                <td>{{ $cert->last_email_datetime ?? 'No Emails Sent' }}</td>
+                <td>{{ $cert->expiration_date }}</td>
                 <td>{{ $cert->expiration_datetime_verified ?? 'Verification Not Attempted' }}</td>
+                @if ($cert->last_good_verification_datetime != '')
+                <td>{{ \Carbon\Carbon::parse($cert->last_good_verification_datetime)->diffForHumans() }}</td>
+                @else
+                <td>None</td>
+                @endif
+                <td>{{ $cert->last_email_datetime ?? 'No Emails Sent' }}</td>
                 <td>{{ $cert->incident ?? 'No Incident ID' }}</td>
                 <td>{{ $cert->agreement->agreement_code }}</td>
                 <td>
