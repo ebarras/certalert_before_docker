@@ -25,12 +25,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+        // * * * * * cd /home/pbarre01/Code/certalert && php artisan schedule:run >> /dev/null 2>&1
 
         // A good plan to speed this up is to tally a 'failed verification' table. At a count of like... 5, stop checking the site.
         // After a certain amount of time, run a task that resets that count to 0.
-        $schedule->command('certs:verify')
+        //$schedule->command('certs:verify')
                  //->everyMinute();
-                 ->hourly();
+                 //->everyTenMinutes();
+                 //->hourly();
     }
 
     /**
