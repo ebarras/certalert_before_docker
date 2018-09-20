@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
         // After a certain amount of time, run a task that resets that count to 0.
         $schedule->command('certs:verify')
                  //->everyMinute();
-                 ->everyTenMinutes();
-                 //->hourly();
+                 //->everyTenMinutes();
+                 ->hourly();
     }
 
     /**
