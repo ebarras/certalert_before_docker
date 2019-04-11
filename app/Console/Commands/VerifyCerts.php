@@ -45,6 +45,8 @@ class VerifyCerts extends Command
         $expirationDate = '';
         $verified_date = '';
         foreach ($certs as $cert) {
+            // Since you've had to look this up before, $this->info is what writes output 
+            // to the screen when running a laravel command.
             $this->info('URL: ' . $cert->url);
 
             $expirationDate = $this->getCertExpirationDate($cert->url);
@@ -56,7 +58,7 @@ class VerifyCerts extends Command
                 $cert->last_good_verification_datetime = Carbon::now()->toDateTimeString();
             } else {
                 $this->info('Scan Failed');
-                $cert->expiration_datetime_verified = 'Scan Failed';
+                $cert->expiration_datetime_verified = null;
             }
             $cert->save();
 
